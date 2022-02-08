@@ -1,3 +1,10 @@
+# 1.0.0 (2022-02-08)
+
+
+### Bug Fixes
+
+* added build args to docker ([e79ad5a](https://github.com/Unsupervisedcom/action-auth-build-push-image/commit/e79ad5a2283294b0881c5609a690462406292931))
+
 # 1.0.0 (2021-12-20)
 
 
