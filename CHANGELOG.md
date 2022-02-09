@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/Unsupervisedcom/action-auth-build-push-image/compare/v1.0.1...v1.0.2) (2022-02-09)
+
+
+### Bug Fixes
+
+* cred path ([#3](https://github.com/Unsupervisedcom/action-auth-build-push-image/issues/3)) ([8109f22](https://github.com/Unsupervisedcom/action-auth-build-push-image/commit/8109f2277c54810075026836ce2b2cbd7cdde553))
+
 ## [1.0.1](https://github.com/Unsupervisedcom/action-auth-build-push-image/compare/v1.0.0...v1.0.1) (2022-02-08)
 
 
