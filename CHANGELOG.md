@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/Unsupervisedcom/action-auth-build-push-image/compare/v1.0.2...v1.0.3) (2022-02-09)
+
+
+### Bug Fixes
+
+* Add artifacts setting ([#4](https://github.com/Unsupervisedcom/action-auth-build-push-image/issues/4)) ([694122f](https://github.com/Unsupervisedcom/action-auth-build-push-image/commit/694122fec011016803c4f8cb0af4ee7aa07adf91))
+
 ## [1.0.2](https://github.com/Unsupervisedcom/action-auth-build-push-image/compare/v1.0.1...v1.0.2) (2022-02-09)
 
 
