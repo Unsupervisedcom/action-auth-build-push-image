@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/Unsupervisedcom/action-auth-build-push-image/compare/v1.0.5...v1.0.6) (2022-02-10)
+
+
+### Bug Fixes
+
+* file_path ([#7](https://github.com/Unsupervisedcom/action-auth-build-push-image/issues/7)) ([4549d69](https://github.com/Unsupervisedcom/action-auth-build-push-image/commit/4549d69112aa7409bcfbbe4e30520dd99c1ce939))
+
 ## [1.0.5](https://github.com/Unsupervisedcom/action-auth-build-push-image/compare/v1.0.4...v1.0.5) (2022-02-10)
 
 
