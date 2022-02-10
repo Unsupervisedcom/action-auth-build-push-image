@@ -76,8 +76,9 @@ runs:
         echo "::set-output name=tags::$fullTags"
     - id: build-image
       uses: docker/build-push-action@v2
+      env:
+        DOCKER_BUILDKIT: 1
       with:
-        build-args: google_application_credentials='${{ steps.auth.outputs.credentials_file_path }}'
         secrets: ${{ inputs.secrets }}
         tags: ${{ steps.get-tags.outputs.tags }}
         push: true
@@ -89,8 +90,9 @@ runs:
       # so that others can use the cache from the repository. So adding this step here to build from gha cache
       # and cache to gar cache tag
       uses: docker/build-push-action@v2
+      env:
+        DOCKER_BUILDKIT: 1
       with:
-        build-args: google_application_credentials='${{ steps.auth.outputs.credentials_file_path }}'
         secrets: ${{ inputs.secrets }}
         secret-files: ${{ inputs.credentials_json }}
         cache-from: type=gha,mode=max
