@@ -1,4 +1,4 @@
-name: Build and Push image
+ame: Build and Push image
 description: 'Builds an image, pushes to google artifact registry, and caches to gha as well as the `cache` tag. Specifically designed to work with google artifact registry. This is also designed to work on a release trigger by default, and will push latest, and the release tag'
 inputs:
   credentials-json:
@@ -54,7 +54,6 @@ runs:
     - shell: bash
       run: |
         gcloud auth configure-docker ${{ steps.repo-urls.outputs.baseUrl }}
-        gcloud artifacts print-settings python --project=${{ inputs.project-id}} --repository=python --location=${{ inputs.region }}
     - uses: docker/setup-buildx-action@v1
     - id: get-tags
       shell: bash
@@ -79,8 +78,7 @@ runs:
       env:
         DOCKER_BUILDKIT: 1
       with:
-        secrets: ${{ inputs.secrets }}, GOOGLE_APPLICATION_CREDENTIALS=${{ inputs.credentials_json }}
-        secret-files: ${{ inputs.credentials_json }}
+        secrets: ${{ inputs.secrets }}
         tags: ${{ steps.get-tags.outputs.tags }}
         push: true
         cache-from: type=gha,mode=max
@@ -94,7 +92,6 @@ runs:
       env:
         DOCKER_BUILDKIT: 1
       with:
-        secrets: ${{ inputs.secrets }}, GOOGLE_APPLICATION_CREDENTIALS=${{ inputs.credentials_json }}
-        secret-files: ${{ inputs.credentials_json }}
+        secrets: ${{ inputs.secrets }}
         cache-from: type=gha,mode=max
         cache-to: type=registry,ref=${{ steps.repo-urls.outputs.fullUrl }}:${{ inputs.cache-tag-version }},mode=max
