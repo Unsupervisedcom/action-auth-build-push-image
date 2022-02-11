@@ -33,9 +33,8 @@ inputs:
     default: 'cache'
 runs:
   using: composite
-  env:
-    GOOGLE_APPLICATION_CREDENTIALS: key.json
   steps:
+    - run: touch key.json
     - uses: actions/checkout@v2
     - id: auth
       uses: google-github-actions/auth@v0
@@ -75,7 +74,10 @@ runs:
         fullTags=${fullTags::-1}
         echo "will push with tags: $fullTags"
         echo "::set-output name=tags::$fullTags"
-    - run: echo -n ${{ inputs.credentials-json }} | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
+    - name: Set credentials
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: key.json
+      run: echo -n ${{ inputs.credentials-json }} | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
     - id: build-image
       uses: docker/build-push-action@v2
       with:
