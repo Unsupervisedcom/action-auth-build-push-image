@@ -33,6 +33,8 @@ inputs:
     default: 'cache'
 runs:
   using: composite
+  env:
+    GOOGLE_APPLICATION_CREDENTIALS: key.json
   steps:
     - uses: actions/checkout@v2
     - id: auth
@@ -73,12 +75,13 @@ runs:
         fullTags=${fullTags::-1}
         echo "will push with tags: $fullTags"
         echo "::set-output name=tags::$fullTags"
+    - run: echo -n ${{ secrets.GCP_SA_KEY }} | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
     - id: build-image
       uses: docker/build-push-action@v2
       with:
         secrets: |
           ${{ inputs.secrets }}
-          GOOGLE_APPLICATION_CREDENTIALS=""${{ inputs.credentials-json }}""
+          "GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS"
         tags: ${{ steps.get-tags.outputs.tags }}
         push: true
         cache-from: type=gha,mode=max
@@ -92,5 +95,6 @@ runs:
       with:
         secrets: |
           ${{ inputs.secrets }}
+          "GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS"
         cache-from: type=gha,mode=max
         cache-to: type=registry,ref=${{ steps.repo-urls.outputs.fullUrl }}:${{ inputs.cache-tag-version }},mode=max
