@@ -56,7 +56,7 @@ runs:
         gcloud auth configure-docker ${{ steps.repo-urls.outputs.baseUrl }}
     - shell: bash
       run: |
-        gcloud auth application-default login --quiet
+        gcloud auth application-default login --client-id-file=${{ inputs.credentials-json }} --quiet 
     - uses: docker/setup-buildx-action@v1
     - id: get-tags
       shell: bash
