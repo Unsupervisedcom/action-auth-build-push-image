@@ -78,7 +78,7 @@ runs:
       with:
         secrets: |
           ${{ inputs.secrets }}
-          GOOGLE_APPLICATION_CREDENTIALS=${{ inputs.credentials_json }}
+          "GOOGLE_APPLICATION_CREDENTIALS=${{ inputs.credentials_json }}"
         tags: ${{ steps.get-tags.outputs.tags }}
         push: true
         cache-from: type=gha,mode=max
