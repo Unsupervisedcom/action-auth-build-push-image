@@ -73,7 +73,7 @@ runs:
         fullTags=${fullTags::-1}
         echo "will push with tags: $fullTags"
         echo "::set-output name=tags::$fullTags"
-    - - shell: bash
+    - shell: bash
       run: |
         touch key.json
         echo ${{ inputs.credentials-json }} > key.json
