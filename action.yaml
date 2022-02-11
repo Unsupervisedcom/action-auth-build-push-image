@@ -76,7 +76,7 @@ runs:
     - shell: bash
       run: |
         touch key.json
-        echo ${{ inputs.credentials-json }} > key.json
+        echo "${{ inputs.credentials-json }}" > key.json
     - id: build-image
       uses: docker/build-push-action@v2
       with:
