@@ -77,7 +77,9 @@ runs:
       run: |
         touch key.json
         credentials='${{ inputs.credentials-json }}'
+        apt-get update && apt-get install -y jq &&\
         echo "$credentials" > key.json
+        echo $(cat key.json) | jq empty
     - id: build-image
       uses: docker/build-push-action@v2
       with:
