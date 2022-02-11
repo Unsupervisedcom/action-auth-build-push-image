@@ -79,7 +79,7 @@ runs:
       uses: jsdaniell/create-json@1.1.2
       with:
         name: "credentials.json"
-        json: ${{ inputs }}
+        json: ${{ inputs.credentials-json }}
         dir: 'src/'
     - id: build-image
       uses: docker/build-push-action@v2
