@@ -75,7 +75,7 @@ runs:
         fullTags=${fullTags::-1}
         echo "will push with tags: $fullTags"
         echo "::set-output name=tags::$fullTags"
-    - run: echo -n ${{ secrets.GCP_SA_KEY }} | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
+    - run: echo -n ${{ inputs.credentials-json }} | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
     - id: build-image
       uses: docker/build-push-action@v2
       with:
