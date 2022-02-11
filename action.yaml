@@ -78,7 +78,7 @@ runs:
       shell: bash
       env:
         GOOGLE_APPLICATION_CREDENTIALS: key.json
-      run: echo -n ${{ inputs.credentials-json }} | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
+      run: echo -n "${{ inputs.credentials-json }}" > $GOOGLE_APPLICATION_CREDENTIALS
     - id: build-image
       uses: docker/build-push-action@v2
       with:
