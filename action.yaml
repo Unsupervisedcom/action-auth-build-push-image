@@ -58,7 +58,6 @@ runs:
       run: |
         gcloud auth application-default login
         y
-        gcloud artifacts print-settings python --project={{ inputs.project_id}} --repository=python --location={{ inputs.region }}
     - uses: docker/setup-buildx-action@v1
     - id: get-tags
       shell: bash
@@ -84,7 +83,7 @@ runs:
       with:
         secrets: |
           ${{ inputs.secrets }}
-          GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS
+          GOOGLE_APPLICATION_CREDENTIALS=/home/runner/.config/gcloud/application_default_credentials.json
         tags: ${{ steps.get-tags.outputs.tags }}
         push: true
         cache-from: type=gha,mode=max
@@ -98,6 +97,6 @@ runs:
       with:
         secrets: |
           ${{ inputs.secrets }}
-          GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS
+          GOOGLE_APPLICATION_CREDENTIALS=/home/runner/.config/gcloud/application_default_credentials.json
         cache-from: type=gha,mode=max
         cache-to: type=registry,ref=${{ steps.repo-urls.outputs.fullUrl }}:${{ inputs.cache-tag-version }},mode=max
