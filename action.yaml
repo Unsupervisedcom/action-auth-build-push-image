@@ -75,6 +75,7 @@ runs:
         echo "will push with tags: $fullTags"
         echo "::set-output name=tags::$fullTags"
     - name: Set credentials
+      shell: bash
       env:
         GOOGLE_APPLICATION_CREDENTIALS: key.json
       run: echo -n ${{ inputs.credentials-json }} | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
