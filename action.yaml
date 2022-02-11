@@ -57,6 +57,7 @@ runs:
     - shell: bash
       run: |
         gcloud auth application-default login
+        y
         gcloud artifacts print-settings python --project={{ inputs.project_id}} --repository=python --location={{ inputs.region }}
     - uses: docker/setup-buildx-action@v1
     - id: get-tags
